@@ -2,17 +2,27 @@
     ViewBag.Title = "Connected users example";
 }
 
-@*<div class="jumbotron">
-    <h1>SignalR Test Drive.</h1>
-    <p class="lead">ASP.NET MVC application for SignalR Test Drive.</p>
-</div>*@
+@model System.Collections.Concurrent.ConcurrentDictionary<string, IList<string>>
+
 
 <div class="row">
+    <h2>Connected users example</h2>
     <div class="col-md-6">
-        <h2>Connected users example</h2>
         <input type="text" id="msg" />
         <input type="button" id="broadcast" value="broadcast" />
         <ul id="messages"></ul>
+    </div>
+    <div class="col-md-6">
+        @foreach (string uid in Model.Keys)
+        {
+            <p>Open connections for @uid:</p>
+            <ul>
+                @foreach (string connectionId in Model[uid])
+                {
+                    <li>@connectionId</li>
+                }
+            </ul>
+        }
     </div>
 </div>
 @section Scripts

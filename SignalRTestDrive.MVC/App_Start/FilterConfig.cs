@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
+using SignalRTestDrive.MVC.Attributes;
 using SignalRTestDrive.MVC.Infrastructure;
 
 namespace SignalRTestDrive.MVC

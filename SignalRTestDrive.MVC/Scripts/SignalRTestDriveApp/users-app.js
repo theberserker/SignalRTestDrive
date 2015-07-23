@@ -6,10 +6,13 @@ $(function () {
         $('#messages').append('<li>' + data + '</li>');
     });
 
-    connection.start().done(function () {
-        $("#broadcast").click(function () {
-            connection.send($('#msg').val());
-        });
-    });
+    connection.start()
+        .done(function (conn) {
+            console.log('Client connected to ChatHub. Connection ID=' + conn.id);
 
+            $("#broadcast").click(function () {
+                connection.send($('#msg').val());
+            });
+        })
+        .fail(function () { console.log('Could not connect to ChatHub'); });
 });
