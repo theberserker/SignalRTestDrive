@@ -1,13 +1,8 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Chat example";
 }
 
-<div class="jumbotron">
-    <h1>SignalR Test Drive.</h1>
-    <p class="lead">ASP.NET MVC application for SignalR Test Drive.</p>
-</div>
-
-@*<div class="row">
+<div class="row">
     <div class="col-md-6">
         <h2>Chat app example</h2>
         <div>
@@ -18,10 +13,14 @@
         </div>
         <span>By example from <a href="http://www.asp.net/signalr/overview/getting-started/tutorial-getting-started-with-signalr">getting started tutorial.</a></span>
     </div>
-    <div class="col-md-6">
-        <h2>Connected users example</h2>
-        <input type="text" id="msg" />
-        <input type="button" id="broadcast" value="broadcast" />
-        <ul id="messages"></ul>
-    </div>
-</div>*@
+</div>
+
+<script type="text/javascript">
+    window.isSignedIn = @User.Identity.IsAuthenticated.ToString().ToLower(); // tells if we need to display username popup.
+</script>
+
+@section Scripts
+{
+    @Scripts.Render("/signalr/hubs")
+    @Scripts.Render("~/Scripts/SignalRTestDriveApp/chat-app.js")
+}

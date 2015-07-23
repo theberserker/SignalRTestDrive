@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
+using SignalRTestDrive.MVC.Infrastructure;
 
 namespace SignalRTestDrive.MVC
 {
@@ -8,6 +9,7 @@ namespace SignalRTestDrive.MVC
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new UniqueCookieFilterAttribute());
         }
     }
 }

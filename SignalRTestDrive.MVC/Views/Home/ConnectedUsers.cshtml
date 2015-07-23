@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Connected users example";
+}
+
+@*<div class="jumbotron">
+    <h1>SignalR Test Drive.</h1>
+    <p class="lead">ASP.NET MVC application for SignalR Test Drive.</p>
+</div>*@
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Connected users example</h2>
+        <input type="text" id="msg" />
+        <input type="button" id="broadcast" value="broadcast" />
+        <ul id="messages"></ul>
+    </div>
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/Scripts/SignalRTestDriveApp/users-app.js")
+}

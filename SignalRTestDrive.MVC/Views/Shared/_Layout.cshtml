@@ -21,7 +21,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Chat", "Chat", "Home")</li>
+                    <li>@Html.ActionLink("Connected users", "ConnectedUsers", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -41,9 +42,8 @@
     @*@Scripts.Url("~/Scripts/SignalRTestDriveApp/app.js") @*TODO: use bundle later as it's registered*@
     @Scripts.Render("~/bundles/signalR")
     
-    <script src="signalr/hubs"></script>
-
-    @Scripts.Render("~/bundles/app")
+    @*<script src="/signalr/hubs"></script>*@
+    @*@Scripts.Render("~/bundles/app")*@
 
 
     @RenderSection("scripts", required: false)

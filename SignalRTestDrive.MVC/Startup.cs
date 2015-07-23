@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using SignalRTestDrive.MVC.PersistentConnections;
 
 [assembly: OwinStartupAttribute(typeof(SignalRTestDrive.MVC.Startup))]
 namespace SignalRTestDrive.MVC
@@ -10,7 +11,10 @@ namespace SignalRTestDrive.MVC
         {
             ConfigureAuth(app);
             
-            app.MapSignalR();
+            app.MapSignalR(); // the hub part registration (at /signalr)
+
+            app.MapSignalR<UsersConnection>("/echo"); // the persistent connection registration
+
         }
     }
 }
