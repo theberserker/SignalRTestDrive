@@ -2,27 +2,31 @@
     ViewBag.Title = "Connected users example";
 }
 
-@model System.Collections.Concurrent.ConcurrentDictionary<string, IList<string>>
+@using SignalRTestDrive.MVC.Models
+@model IEnumerable<ConnectedUserViewModel>
 
 
 <div class="row">
     <h2>Connected users example</h2>
-    <div class="col-md-6">
-        <input type="text" id="msg" />
-        <input type="button" id="broadcast" value="broadcast" />
-        <ul id="messages"></ul>
+    <div class="container">
+        <h3>Serverside snapshot</h3>
+        <div class="col-md-6">
+            @foreach (ConnectedUserViewModel connectedUser in Model)
+            {
+                <p>Open connections for @connectedUser.UniqueId:</p>
+                <ul>
+                    @foreach (string connectionId in connectedUser.Connections)
+                    {
+                        <li>@connectionId</li>
+                    }
+                </ul>
+            }
+        </div>
     </div>
-    <div class="col-md-6">
-        @foreach (string uid in Model.Keys)
-        {
-            <p>Open connections for @uid:</p>
-            <ul>
-                @foreach (string connectionId in Model[uid])
-                {
-                    <li>@connectionId</li>
-                }
-            </ul>
-        }
+    <div class="container">
+        <h3>Realtime state</h3>
+        <div id="realtimeConnectionsContainer" class="col-md-6">
+        </div>
     </div>
 </div>
 @section Scripts

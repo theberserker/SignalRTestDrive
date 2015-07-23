@@ -18,7 +18,8 @@ namespace SignalRTestDrive.MVC.PersistentConnections
         {
             _usersManager.AddNewConection(request, connectionId);
 
-            return Connection.Send(connectionId, string.Format("Added your connection '{0}'", connectionId));
+            //return Connection.Send(connectionId, _usersManager.GetAll());
+            return Connection.Broadcast(_usersManager.GetConnectedUserViewModels());
         }
 
         protected override Task OnReceived(IRequest request, string connectionId, string data)

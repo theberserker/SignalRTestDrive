@@ -178,6 +178,7 @@
     <Compile Include="Infrastructure\Consts.cs" />
     <Compile Include="Attributes\UniqueCookieFilterAttribute.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ConnectedUserViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="PersistentConnections\UsersConnection.cs" />

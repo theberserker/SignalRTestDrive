@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR;
 using SignalRTestDrive.MVC.Helpers;
+using SignalRTestDrive.MVC.Models;
 
 namespace SignalRTestDrive.MVC.Infrastructure
 {
@@ -42,9 +43,13 @@ namespace SignalRTestDrive.MVC.Infrastructure
             return uid;
         }
 
-        internal ConcurrentDictionary<string, IList<string>> GetAll()
+        internal IEnumerable<ConnectedUserViewModel> GetConnectedUserViewModels()
         {
-            return Repository.ConnectedUsers;
+            return Repository.ConnectedUsers.Keys.Select(key => new ConnectedUserViewModel
+            {
+                UniqueId = key,
+                Connections = Repository.ConnectedUsers[key]
+            });
         }
     }
 }
