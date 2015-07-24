@@ -25,6 +25,7 @@ namespace SignalRTestDrive.MVC
 
             bundles.Add(new ScriptBundle("~/bundles/signalR").Include("~/Scripts/jquery.signalR-2.2.0.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/handlebars").Include("~/Scripts/handlebars.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app")
                 .IncludeDirectory("~/Scripts/SignalRTestDriveApp", "*.js", true));

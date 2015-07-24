@@ -20,8 +20,6 @@ namespace SignalRTestDrive.MVC.Infrastructure
             if (connections != null)
             {
                 connections.Add(connectionId);
-                // TODO: this probably shouldn't be required since the list is in dictionary by ref.
-                ConnectedUsers[uid] = connections;
             }
             else
             {
@@ -36,7 +34,7 @@ namespace SignalRTestDrive.MVC.Infrastructure
 
         public void Remove(string uid, string connectionId)
         {
-            if (ConnectedUsers[uid] == null)
+            if (!ConnectedUsers.Keys.Contains(uid))
             {
                 Trace.WriteLine(string.Format("Something strange... uid '{0}' not present", uid));
                 return;
@@ -44,7 +42,7 @@ namespace SignalRTestDrive.MVC.Infrastructure
 
             ConnectedUsers[uid].Remove(connectionId); // TODO: will this fail if connectionId not present?
 
-            if (ConnectedUsers.Count == 0)
+            if (ConnectedUsers[uid].Count == 0)
             {
                 IList<string> lRemoved;
                 ConnectedUsers.TryRemove(uid, out lRemoved);

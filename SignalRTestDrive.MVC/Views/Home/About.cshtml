@@ -1,7 +1,24 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h2>@ViewBag.Title</h2>
 
-<p>Use this area to provide additional information.</p>
+<p>
+    This is a basic example project for SignalR. The application is created on default ASP.NET MVC 5 Template with Authentication.
+</p>
+<p>
+    Project currently consists of two examples:
+    <ul>
+        <li><a href="~/Home/Chat">Chat</a></li>
+        <li><a href="~/Home/ConnectedUsers">Connected users</a></li>
+    </ul>
+</p>
+
+<p>
+    Chat is trivial, mostly copy-paste example from the official SignalR tutorial. It uses Hub implementation.
+</p>
+<p>
+    Connected users is also very simple implementation, but is based on <strong>PersistentConnection</strong> implementation.
+    It displays realtime when different users get connected.
+    When users connect or disconnect this is tracked by ConnectedUsersManager and manager is using a ConnectedUsersRepository to store information about connected users.
+</p>

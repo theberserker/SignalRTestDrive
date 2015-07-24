@@ -8,9 +8,9 @@
 
 <div class="row">
     <h2>Connected users example</h2>
-    <div class="container">
-        <h3>Serverside snapshot</h3>
-        <div class="col-md-6">
+    <div class="container col-md-6">
+        <h3>Serverside snapshot at serverside page load</h3>
+        <div>
             @foreach (ConnectedUserViewModel connectedUser in Model)
             {
                 <p>Open connections for @connectedUser.UniqueId:</p>
@@ -23,9 +23,10 @@
             }
         </div>
     </div>
-    <div class="container">
+    <div class="container col-md-6">
         <h3>Realtime state</h3>
-        <div id="realtimeConnectionsContainer" class="col-md-6">
+        <div id="realtimeConnectionsContainer">
+
         </div>
     </div>
 </div>
@@ -33,3 +34,17 @@
 {
     @Scripts.Render("~/Scripts/SignalRTestDriveApp/users-app.js")
 }
+
+<!-- Handlebars (client-side) view for real-time data presentation. This would be nice if it was somewhere else in project structure, but no time for being sexy. -->
+<script id="realtime-template" type="text/x-handlebars-template">
+    <p>Below list displays open connections by unique user (identified by persistent cookie)</p>
+    {{#users}}
+    <h4>user id = '{{UniqueId}}':</h4>
+    <ul>
+        {{#Connections}}
+        <li>{{this}}</li>
+        {{/Connections}}
+    </ul>
+    {{/users}}
+    
+</script>

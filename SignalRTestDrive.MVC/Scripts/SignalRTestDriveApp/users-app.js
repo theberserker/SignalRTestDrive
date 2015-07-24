@@ -3,15 +3,14 @@ $(function () {
     var connection = $.connection('/echo');
 
     connection.received(function (data) {
-        if (data && Object.prototype.toString.call(data) === '[object Array]') {
-            $('#realtimeConnectionsContainer').empty();
-            $('#realtimeConnectionsContainer').append('<li>' + JSON.stringify(data) + '</li>');
+        if (data) {
+            var source = $("#realtime-template").html();
+            var template = Handlebars.compile(source);
+            var html = template(data);
+            $('#realtimeConnectionsContainer').html(html);
 
-            //data.forEach(function (currVal, index, array) {
-            //    $('#realtimeConnectionsContainer').append("<li>");
-            //});
         } else {
-            alert("Unknown data format: " + JSON.stringify(data));
+            alert("No data recieved!");
         }
     });
 

@@ -39,13 +39,9 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @*@Scripts.Url("~/Scripts/SignalRTestDriveApp/app.js") @*TODO: use bundle later as it's registered*@
+    @Scripts.Render("~/bundles/handlebars")
     @Scripts.Render("~/bundles/signalR")
     
-    @*<script src="/signalr/hubs"></script>*@
-    @*@Scripts.Render("~/bundles/app")*@
-
-
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -18,8 +18,8 @@ namespace SignalRTestDrive.MVC.PersistentConnections
         {
             _usersManager.AddNewConection(request, connectionId);
 
-            //return Connection.Send(connectionId, _usersManager.GetAll());
-            return Connection.Broadcast(_usersManager.GetConnectedUserViewModels());
+            var result = new { users = _usersManager.GetConnectedUserViewModels() }; // we need named array for handlebars
+            return Connection.Broadcast(result);
         }
 
         protected override Task OnReceived(IRequest request, string connectionId, string data)
@@ -35,8 +35,10 @@ namespace SignalRTestDrive.MVC.PersistentConnections
         protected override Task OnDisconnected(IRequest request, string connectionId, bool stopCalled)
         {
             _usersManager.RemoveConnection(request, connectionId);
+            base.OnDisconnected(request, connectionId, stopCalled);
 
-            return base.OnDisconnected(request, connectionId, stopCalled);
+            var result = new { users = _usersManager.GetConnectedUserViewModels() }; // we need named array for handlebars
+            return Connection.Broadcast(result);
         }
     }
 }
