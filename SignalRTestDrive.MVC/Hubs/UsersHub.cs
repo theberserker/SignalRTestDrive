@@ -22,7 +22,6 @@ namespace SignalRTestDrive.MVC.Hubs
             Broadcast(_usersManager.GetConnectedUserViewModels());
 
             return base.OnConnected();
-            //return Connection.Broadcast(result);
         }
 
         public override Task OnReconnected() // TODO!
@@ -36,7 +35,6 @@ namespace SignalRTestDrive.MVC.Hubs
 
             Broadcast(_usersManager.GetConnectedUserViewModels());
 
-            //return Connection.Broadcast(result);
             return base.OnDisconnected(stopCalled);
         }
     }
