@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Connected users example";
+}
+
+@using SignalRTestDrive.MVC.Models
+@model IEnumerable<ConnectedUserViewModel>
+
+
+<div class="row">
+    <h2>Connected users example</h2>
+    <div class="container col-md-6">
+        <h3>Serverside snapshot at serverside page load</h3>
+        <div>
+            @foreach (ConnectedUserViewModel connectedUser in Model)
+            {
+                <p>Open connections for @connectedUser.UniqueId:</p>
+                <ul>
+                    @foreach (string connectionId in connectedUser.Connections)
+                    {
+                        <li>@connectionId</li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+    <div class="container col-md-6">
+        <h3>Realtime state</h3>
+        <div id="realtimeConnectionsContainer">
+
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    @Scripts.Render("/signalr/hubs")
+    @Scripts.Render("~/Scripts/SignalRTestDriveApp/users-hub-app.js")
+}
+
+<!-- Handlebars (client-side) view for real-time data presentation. This would be nice if it was somewhere else in project structure, but no time for being sexy. -->
+<script id="realtime-template" type="text/x-handlebars-template">
+    <p>Below list displays open connections by unique user (identified by persistent cookie)</p>
+    {{#users}}
+    <h4>user id = '{{UniqueId}}':</h4>
+    <ul>
+        {{#Connections}}
+        <li>{{this}}</li>
+        {{/Connections}}
+    </ul>
+    {{/users}}
+    
+</script>

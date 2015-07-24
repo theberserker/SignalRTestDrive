@@ -1,8 +1,9 @@
-﻿//based on https://github.com/SignalR/SignalR/wiki/QuickStart-Persistent-Connections
-$(function () {
-    var connection = $.connection('/echo');
+﻿$(function () {
+    // Declare a proxy to reference the hub. 
+    var usersHub = $.connection.usersHub;
 
-    connection.received(function (data) {
+    // Create a function that the hub can call to broadcast messages.
+    usersHub.client.broadcastState = function (data) {
         if (data) {
             var source = $("#realtime-template").html();
             var template = Handlebars.compile(source);
@@ -12,11 +13,13 @@ $(function () {
         } else {
             alert("No data recieved!");
         }
-    });
+    };
 
-    connection.start()
+    $.connection.hub.logging = true;
+    $.connection.hub.start()
         .done(function (conn) {
             console.log('Client connected to ChatHub. Connection ID=' + conn.id);
         })
         .fail(function (error) { console.log('Could not connect to ChatHub. Error:' + error); });
-});
+
+}());

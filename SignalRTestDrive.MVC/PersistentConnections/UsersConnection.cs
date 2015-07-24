@@ -27,7 +27,7 @@ namespace SignalRTestDrive.MVC.PersistentConnections
             return Connection.Broadcast(data);
         }
 
-        protected override Task OnReconnected(IRequest request, string connectionId)
+        protected override Task OnReconnected(IRequest request, string connectionId) // TODO
         {
             return base.OnReconnected(request, connectionId);
         }

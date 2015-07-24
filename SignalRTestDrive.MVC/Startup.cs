@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin;
+﻿using Microsoft.AspNet.SignalR;
+using Microsoft.Owin;
 using Owin;
 using SignalRTestDrive.MVC.PersistentConnections;
 
@@ -14,6 +15,8 @@ namespace SignalRTestDrive.MVC
             app.MapSignalR(); // the hub part registration (at /signalr)
 
             app.MapSignalR<UsersConnection>("/echo"); // the persistent connection registration
+
+            
 
         }
     }

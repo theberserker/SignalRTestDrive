@@ -173,6 +173,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\PersistentCookieHelper.cs" />
+    <Compile Include="Hubs\UsersHub.cs" />
     <Compile Include="Infrastructure\ConnectedUsersManager.cs" />
     <Compile Include="Infrastructure\ConnectedUsersRepository.cs" />
     <Compile Include="Infrastructure\Consts.cs" />
@@ -223,6 +224,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\SignalRTestDriveApp\chat-app.js" />
     <Content Include="Scripts\SignalRTestDriveApp\users-app.js" />
+    <Content Include="Scripts\SignalRTestDriveApp\users-hub-app.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -260,6 +262,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\ConnectedUsers.cshtml" />
     <Content Include="Views\Home\Chat.cshtml" />
+    <Content Include="Views\Home\ConnectedUsersHub.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -27,6 +27,12 @@ namespace SignalRTestDrive.MVC.Controllers
             return View(cuManager.GetConnectedUserViewModels());
         }
 
+        public ActionResult ConnectedUsersHub()
+        {
+            var cuManager = new ConnectedUsersManager();
+            return View(cuManager.GetConnectedUserViewModels());
+        }
+
         public ActionResult Chat()
         {
             return View();
