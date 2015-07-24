@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using System.Web.Routing;
+using Microsoft.AspNet.SignalR;
 using Microsoft.Owin;
 using Owin;
 using SignalRTestDrive.MVC.PersistentConnections;
@@ -11,13 +12,11 @@ namespace SignalRTestDrive.MVC
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            
-            app.MapSignalR(); // the hub part registration (at /signalr)
+
+            var hubConfig = new HubConfiguration() {EnableDetailedErrors = true};
+            app.MapSignalR(hubConfig); // the hub part registration (at /signalr)
 
             app.MapSignalR<UsersConnection>("/echo"); // the persistent connection registration
-
-            
-
         }
     }
 }
