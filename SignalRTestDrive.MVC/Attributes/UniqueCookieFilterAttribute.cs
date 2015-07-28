@@ -1,6 +1,5 @@
 ﻿using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.SignalR;
 using SignalRTestDrive.MVC.Helpers;
 using SignalRTestDrive.MVC.Infrastructure;
 
@@ -25,14 +24,6 @@ namespace SignalRTestDrive.MVC.Attributes
                 cookie = PersistentCookieHelper.Generate(Consts.UniqieIdCookieName);
                 filterContext.HttpContext.Response.Cookies.Add(cookie);
             }
-
-            TrackLicense(cookie);
-        }
-
-        private void TrackLicense(HttpCookie cookie)
-        {
-            var id = PersistentCookieHelper.Decrypt(cookie);
-            
         }
     }
 }
